@@ -5,8 +5,7 @@ using namespace std;
 
 int main()
 {
-	string a;
-	string a2[2] = {"``","''"};
+	string a, a2[2] = {"``","''"};
 	bool flag = false;
 	while (getline(cin,a))
 	{
@@ -22,6 +21,4 @@ int main()
 		}
 		cout << "\n";
 	}
-
-	return 0;
 }
