@@ -8,7 +8,7 @@ using namespace std;
 void MinAdjust(int &a, int&b)
 {
 	if (b < a)
-		swap(a,b)
+		swap(a,b);
 }
 
 int main()
@@ -18,9 +18,9 @@ int main()
 	while (getline(cin, s))
 	{
 		//Cumulative sum
-		A[0] += s[0] - '0';
+		A[0] = s[0] - '0';
 		for (int i = 1; i < s.size(); ++i)
-			A[i] += s[i] - '0' + A[i - 1];
+			A[i] = s[i] - '0' + A[i - 1];
 			
 		cout << "Case " << cnt++ << ":\n";
 		int q;
