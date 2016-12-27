@@ -8,18 +8,13 @@ int main()
 	string G[7] = {"HELLO", "HOLA", "HALLO", "BONJOUR", "CIAO", "ZDRAVSTVUJTE", ""};
 	string L[7] = {"ENGLISH", "SPANISH", "GERMAN", "FRENCH", "ITALIAN", "RUSSIAN", "UNKNOWN"};
 	
-	
-	while (cin >> s, s != "#")
+	while (cin >> G[6], G[6] != "#")
 	{
-		G[6] = s;
 		for (int i = 0; i < 7; ++i)
-			if (s == G[i])
+			if (G[6] == G[i])
 			{
 				cout << "Case " << cnt++ << ": " << L[i] << "\n";
 				break;
 			}		
 	}
-	
-	
-	return 0;
 }
