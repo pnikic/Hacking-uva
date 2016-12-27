@@ -28,7 +28,7 @@ int main()
 				M[ptr] -= 1;
 		}
 		cout << "Case " << dec << cnt++ << ":";
-		cout << hex << setiosflags(ios::uppercase);
+		cout << hex << uppercase;
 		for (unsigned char j : M)
 			cout << " " << (j < 16 ? "0" : "") << int(j);
 		cout << "\n";		
