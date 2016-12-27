@@ -1,18 +1,11 @@
 #include <iostream>
-#include <map>
-#include <utility>
 #include <string>
 
 using namespace std;
-#define MP make_pair
 
 int main()
 {
-	map<pair<bool, bool>, string> M;
-	M[MP(1,1)] = "NE";
-	M[MP(0,1)] = "NO";
-	M[MP(1,0)] = "SE";
-	M[MP(0,0)] = "SO";
+	string M[2][2] = {{"SO", "NO"},{"SE", "NE"}};
 	
 	int k;
 	while (cin >> k, k > 0)
@@ -24,12 +17,10 @@ int main()
 		{
 			cin >> m >> n;
 			if ((m != p) && (n != q))
-				cout << M[MP(m > p, n > q)] << endl;
+				cout << M[m > p][n > q] << "\n";
 			else
 				cout << "divisa\n";
-		}	
-		
-		
+		}			
 	}
 	return 0;
 }
