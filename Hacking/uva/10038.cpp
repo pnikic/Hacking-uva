@@ -18,7 +18,7 @@ int main()
 		int cnt = 0;		
 		int a, b;
 		cin >> a;
-		for(int i = 1; i < n; ++i)
+		for (int i = 1; i < n; ++i)
 		{
 			cin >> b;
 			int ind = abs(a-b) - 1;
