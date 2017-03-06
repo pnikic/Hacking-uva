@@ -2,18 +2,13 @@
 #include <cstring>
 using namespace std;
 
-int abs(int a)
-{
-	return a > 0 ? a : -a;
-}
-
 int main()
 {
 	int n;
 	while (cin >> n)
 	{
 		bool A[3000];
-		memset(A, false, 3000*sizeof(bool));
+		memset(A, false, sizeof(A));
 		
 		int cnt = 0;		
 		int a, b;
