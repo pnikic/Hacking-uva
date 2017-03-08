@@ -8,7 +8,6 @@ int main()
 	int b, n;
 	while (cin >> b >> n, b || n)
 	{
-		bool flag = true;
 		int R[21];
 		
 		for (int i = 0; i < b; ++i)
