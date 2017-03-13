@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 using namespace std;
@@ -9,36 +10,25 @@ int main()
 {
 	int n, a;
 	cin >> n;
-	cin.ignore();
-	string tmp, r1;
-	getline(cin, tmp);
 		
 	while (n--)
 	{
-		getline(cin, r1);
+		cin.ignore(2);
+		string str;
+		getline(cin, str);
 		vi A;
-		unsigned pos = 0;
-		//Parse r1:
-		do {
-			a = r1.find_first_of(" ", pos);
-			A.push_back(stoi(r1.substr(pos, a - pos)));
-			pos = a + 1;
-		} while (a != string::npos);
-		
-		vector<string> R(A.size());
+		istringstream iss(str);
+		while (iss >> a)
+			A.push_back(a);
+				
+		vector<string> R(A.size());	
 		for (int i = 0; i < A.size(); ++i)
-		{
-			string x;
-			cin >> x;
-			R[A[i] - 1] = x;
-		}
-		cin.ignore();
-		getline(cin, tmp);
-
+			cin >> R[A[i] - 1];
+			
 		for (string x : R)	
-			cout << x << endl;
+			cout << x << '\n';
 		
 		if (n)
-			cout << endl;
+			cout << '\n';
 	}
 }
