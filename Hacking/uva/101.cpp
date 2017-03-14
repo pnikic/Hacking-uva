@@ -3,7 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <utility>
-#include <numeric>
+#include <tuple>
 using namespace std;
 
 typedef pair<int, int> ii;
@@ -20,8 +20,8 @@ vvi Mat;
 void ret_stacked(int &a)
 {
 	//Return blocks stacked on a on their initial positions
-	int a1 = Pos[a].first;
-	int a2 = Pos[a].second;
+	int a1, a2;
+	tie(a1, a2) = Pos[a];
 	
 	for (int j = a2 + 1; j < Mat[a1].size(); ++j)
 	{
@@ -37,8 +37,8 @@ void ret_stacked(int &a)
 void pile(int &a, int&b)
 {
 	//Piles a and all blocks above it onto the stack which contains b
-	int a1 = Pos[a].first;
-	int a2 = Pos[a].second;
+	int a1, a2;
+	tie(a1, a2) = Pos[a];
 	int b1 = Pos[b].first;
 	
 	for (int j = a2; j < Mat[a1].size(); ++j)
@@ -79,11 +79,10 @@ int main()
 		int a, b;
 		iss >> com1 >> a >> com2 >> b;
 		
-		int a1 = Pos[a].first;
-		int a2 = Pos[a].second;
-		int b1 = Pos[b].first;
-		int b2 = Pos[b].second;
-		
+		int a1, a2, b1, b2;
+		tie(a1, a2) = Pos[a];
+		tie(b1, b2) = Pos[b];
+				
 		if (a == b || a1 == b1) //Illegal moves
 			continue;
 		
