@@ -19,7 +19,7 @@ vvi Mat;
 
 void ret_stacked(int &a)
 {
-	//Return blocks stacked on their initial positions
+	//Return blocks stacked on a on their initial positions
 	int a1 = Pos[a].first;
 	int a2 = Pos[a].second;
 	
@@ -88,6 +88,7 @@ int main()
 			continue;
 		
 		if (com1 == "move")
+		{
 			if (com2 == "onto")
 			{
 				ret_stacked(a);
@@ -104,11 +105,17 @@ int main()
 				Pos[a] = MP(b1, Mat[b1].size() - 1);
 				
 			}
+		}
 		if (com1 == "pile")
+		{
 			if (com2 == "onto")
-				ret_stacked(b),	pile(a, b);
+			{
+				ret_stacked(b);
+				pile(a, b);
+			}
 			else
 				pile(a,b);
+		}
 	}
 	printMat();
 }
