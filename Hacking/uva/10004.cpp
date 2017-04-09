@@ -15,7 +15,7 @@ bool dfs(int v, int color)
 	Col[v] = color;
 	for (int i = 0; i < G[v].size(); ++i)
 	{
-		if (Col[G[v][i]] >= 0 && Col[G[v][i]] == color)
+		if (Col[G[v][i]] == color)
 			return false;
 					
 		if (Col[G[v][i]] == -1)
