@@ -20,10 +20,7 @@ int main()
 	int n, x, y, scen = 1;
 	while (cin >> n, n)
 	{
-		//Grid: 1000 x 1000 -> MAX_DIST = sqrt(2) * 1000
-		vector<float> D(n, 1500);	//Distance to Tree
-		vector<bool> T(n); 			//Tree
-		D[0] = 0;
+		vector<bool> T(n); 		//Tree
 		T[0] = true;
 		priority_queue<fi, vector<fi>, greater<fi> > PQ;
 		PQ.emplace(0, 0);
@@ -43,13 +40,10 @@ int main()
 			dist = max(dist, f); //minimax update
 			
 			for (int i = 0; i < n; ++i)
-			{
-				float dd = d(Pts[i], Pts[x]);
-				if (i != x && !T[i] && dd < D[i])
-					D[i] = dd, PQ.emplace(dd, i);
-			}
+				if (i != x && !T[i])
+					PQ.emplace(d(Pts[i], Pts[x]), i);
 		}
-
+		
 		printf("Scenario #%d\nFrog Distance = %.3f\n\n", scen++, dist);
 	}
 }
