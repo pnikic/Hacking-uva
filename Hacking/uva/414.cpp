@@ -20,7 +20,7 @@ int main()
 			if (A[i] > max)
 				max = A[i];
 		}		
-		int res = n * max - accumulate(A, A + n, 0);;
+		int res = n * max - accumulate(A, A + n, 0);
 		cout << res << '\n';
 	}
 }
