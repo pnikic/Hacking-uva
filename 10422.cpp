@@ -1,12 +1,8 @@
-// Problem is that I am going back to the position where I came from.
-// Also without pruning is very slow
-
-//->Observer, I lost my code for this one ... but I used BFS approach. As far as I can recall, I started from target state, find possible moves that are one-step away ... I repeated that it until at most 10 steps. I stored each possible move into a hash-list. After this, I just dealt with the inputs, if it's within 10 moves, it must be in my hash list.
-
 #include <iostream>
 #include <vector>
 #include <string>
 #include <queue>
+#include <set>
 #include <tuple>
 
 using namespace std;
@@ -51,6 +47,7 @@ bool f(queue<std::pair<vs, int> >& Q, vs& p, int d)
 			Q.emplace(pos, d + 1);
 		}
 	}
+    
 	
 	return false;
 	
@@ -64,18 +61,23 @@ int main()
 	while (N--)
 	{
 		vs start(5);
+        set<vs> S;
 		for (int i = 0; i < 5; ++i)
-			getline(cin, start[i]);
+			getline(cin, start[i]), start[i].resize(5);
 		
 		queue<std::pair<vs, int> > Q;
 		Q.emplace(start, 0);
 		int res = -1;
 		while (!Q.empty())
 		{
-			vs p; int d;
+            vs p; int d;
 			tie(p, d) = Q.front(); Q.pop();
-			if(f(Q, p, d))
-				res = d;				
+            auto it = S.find(p);
+            
+			if(it == S.end() && f(Q, p, d))
+				res = d;
+
+            S.insert(p);
 		}
 		
 		if (res != -1)
