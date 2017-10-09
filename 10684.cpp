@@ -13,8 +13,7 @@ int main()
             cs += a;
             best = max(best, cs);  
             
-            if (cs < 0)
-                cs = 0;
+            cs = max(cs, 0);
         }
 
         if (best > 0)
