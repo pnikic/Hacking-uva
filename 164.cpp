@@ -13,10 +13,7 @@ void print(int i, int j)
     if (par[i][j] == 1)
     {
         print(i, j - 1);
-        if (nw[i][j] != nw[i][j - 1])
-            cout << 'D' << s[j - 1] << (ind < 10 ? "0" : "") << ind;
-        else
-            ++ind;
+        cout << 'D' << s[j - 1] << (ind < 10 ? "0" : "") << ind;
     }
     else if (par[i][j] == 2)
     {
@@ -29,10 +26,7 @@ void print(int i, int j)
     else if (par[i][j] == 3)
     {
         print(i - 1, j);
-        if (nw[i][j] != nw[i - 1][j])
-            cout << 'I' << t[i - 1] << (ind < 10 ? "0" : "") << ind++;
-        else
-            ++ind;
+        cout << 'I' << t[i - 1] << (ind < 10 ? "0" : "") << ind++;
     }
 }
 
