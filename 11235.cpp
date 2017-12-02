@@ -65,24 +65,13 @@ int main()
     while (cin >> n >> q, n)
     {
         vi A(n), P(n);
-        int cnt = 1, it = 0, curr;
-        cin >> P[0]; curr = P[0];
+        cin >> P[0];
+        A[0] = 1;
         for (int i = 1; i < n; ++i)
         {
             cin >> P[i];
-            if (curr != P[i])
-            {
-                curr = P[i];
-                for (; it < i; ++it)
-                    A[it] = cnt;
-                cnt = 0;
-            }
-            ++cnt;
+            A[i] = P[i] == P[i - 1] ? A[i - 1] + 1 : 1;
         }
-
-        // Trailing numbers
-        for (; it < n; ++it)
-            A[it] = cnt;
         
         SegTree S(A);
         
