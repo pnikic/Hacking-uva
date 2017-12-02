@@ -1,7 +1,5 @@
-#include <algorithm> 
 #include <iostream>
 #include <vector>
-#include <iterator>
 using namespace std;
 typedef vector<int> vi;
 
@@ -78,17 +76,10 @@ int main()
         for (int i = 0; i < q; ++i)
         {
             cin >> l >> r; --l; --r;
-            auto it1 = find_if(P.begin() + l, P.begin() + r + 1,
-                               [&](int a){return a != P[l];});
-            auto it2 = find_if(P.rbegin() + n - r - 1, P.rbegin() + n - l,
-                               [&](int a){return a != P[r];});
-
-            int c1 = distance(P.begin() + l, it1);
-            int c2 = distance(P.rbegin() + n - r - 1, it2);
-            
-            l += c1; r -= c2;
-            int c3 = l <= r ? A[S.rmq(l, r)] : 1;
-            cout << max(c3, max(c1, c2)) << '\n';
+            int s = S.rmq(l, r);
+            int m = min(A[s], s - l + 1);
+            m = max(m, A[S.rmq(s + 1, r)]);
+            cout << m << '\n';
         }
     }
 }
