@@ -12,6 +12,17 @@ int dx[8] = {1, 2,  2,  1, -1, -2, -2, -1};
 int dy[8] = {2, 1, -1, -2, -2, -1,  1,  2};
 vs target({"11111", "01111", "00 11", "00001", "00000"});
 
+int h(vs& p)
+{
+    int s = 0;
+    for (int i = 0; i < 5; ++i)
+        for (int j = 0; j < 5; ++j)
+            if (p[i][j] != target[i][j])
+                ++s;
+
+    return max(0, s - 1);
+}
+
 bool check(vs& p)
 {
 	bool res = true;
@@ -26,7 +37,7 @@ bool f(queue<std::pair<vs, int> >& Q, vs& p, int d)
 	if (check(p))
 		return true;	
 	
-	if (d > 9)
+	if (d + h(p) > 10)
 		return false;
 	
 	int ex, ey;
