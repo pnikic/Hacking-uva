@@ -14,7 +14,6 @@ int main()
             a = a % b;
             swap(a, b);
         }
-        cout << a << "]\n";
-                
+        cout << a << "]\n";               
     }
 }

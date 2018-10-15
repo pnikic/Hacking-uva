@@ -1,4 +1,3 @@
-#include <cmath>
 #include <cstring>
 #include <iostream>
 using namespace std;
@@ -7,10 +6,10 @@ int C[40], IT[40], memo[40][300][300][40], m, S;
 
 int cc(int idx, int c, int it, int cnt)
 {
-    float val = sqrt(c * c + it * it);
-    if (val == S)
+    int val = c * c + it * it;
+    if (val == S * S)
         return cnt;
-    if (val > S)
+    if (val > S * S)
         return 1e9;
     if (idx == m)
         return 1e9;
@@ -26,9 +25,6 @@ int main()
     cin >> T;
     while (T--)
     {
-
-        memset(C, -1, sizeof(C));
-        memset(IT, -1, sizeof(IT));
         memset(memo, -1, sizeof(memo));
         cin >> m >> S;
         for (int i = 0; i < m; ++i)

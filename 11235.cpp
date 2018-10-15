@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 typedef vector<int> vi;
+#define unlikely(x) __builtin_expect((x), 0)
 
 class SegTree
 {
@@ -78,7 +79,8 @@ int main()
             cin >> l >> r; --l; --r;
             int s = S.rmq(l, r);
             int m = min(A[s], s - l + 1);
-            m = max(m, A[S.rmq(s + 1, r)]);
+            if (unlikely(s + 1 <= r))
+                m = max(m, A[S.rmq(s + 1, r)]);
             cout << m << '\n';
         }
     }
